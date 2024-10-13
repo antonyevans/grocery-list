@@ -42,6 +42,13 @@ def toggle_item(id):
     db.session.commit()
     return redirect(url_for('index'))
 
+@app.route('/delete/<int:id>')
+def delete_item(id):
+    item = GroceryItem.query.get_or_404(id)
+    db.session.delete(item)
+    db.session.commit()
+    return redirect(url_for('index'))
+
 if __name__ == '__main__': 
     with app.app_context():
         db.create_all()

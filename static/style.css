@@ -69,6 +69,28 @@ button {
     margin-left: 10px;
 }
 
+.delete-btn {
+    float: right;
+    text-decoration: none;
+    color: #ff4136;
+    font-size: 1.2em;
+    margin-left: 10px;
+}
+
+.delete-btn:hover {
+    color: #ff1717;
+}
+
+.grocery-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.grocery-list li > *:not(.delete-btn) {
+    margin-right: auto;
+}
+
 @media (max-width: 600px) {
     .container {
         padding: 10px;
