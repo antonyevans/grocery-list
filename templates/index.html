@@ -19,10 +19,12 @@
                 <a href="{{ url_for('toggle_item', id=item.id) }}" class="toggle-btn">
                     {% if item.is_active %}☐{% else %}☑{% endif %}
                 </a>
-                {{ item.name }}
-                {% if not item.is_active %}
-                    <span class="checked-date">(Checked: {{ item.checked_date.strftime('%Y-%m-%d') }})</span>
-                {% endif %}
+                <div class="item-content">
+                    <span class="item-name">{{ item.name }}</span>
+                    {% if not item.is_active %}
+                        <span class="checked-date">(Checked: {{ item.checked_date.strftime('%Y-%m-%d') }})</span>
+                    {% endif %}
+                </div>
                 <a href="{{ url_for('delete_item', id=item.id) }}" class="delete-btn" onclick="return confirm('Are you sure you want to delete this item?');">🗑️</a>
             </li>
             {% endfor %}
