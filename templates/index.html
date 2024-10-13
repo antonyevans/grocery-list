@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grocery List</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Grocery List</h1>
+        <form method="POST">
+            <input type="text" name="item_name" placeholder="Add new item" required>
+            <button type="submit">Add</button>
+        </form>
+        <ul class="grocery-list">
+            {% for item in items %}
+            <li class="{% if not item.is_active %}completed{% endif %}">
+                <a href="{{ url_for('toggle_item', id=item.id) }}" class="toggle-btn">
+                    {% if item.is_active %}☐{% else %}☑{% endif %}
+                </a>
+                {{ item.name }}
+                {% if not item.is_active %}
+                    <span class="checked-date">({{ item.checked_date.strftime('%Y-%m-%d') }})</span>
+                {% endif %}
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+</html>
